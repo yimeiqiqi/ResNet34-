@@ -29,19 +29,18 @@ data_transform = {
 data_root = os.path.abspath(os.path.join(os.getcwd(), "../flower_data"))  # get data root path 返回上上层目录
 image_path = data_root + "/flower_data/"  # flower data_set path
 
-# 导入训练集并进行预处理
+# 导入训练集
 train_dataset = datasets.ImageFolder(root=image_path + "train",
                                      transform=data_transform["train"])
 train_num = len(train_dataset)
 
-# 按batch_size分批次加载训练集
+# 加载训练集
 train_loader = torch.utils.data.DataLoader(train_dataset,  # 导入的训练集
                                            batch_size=16,  # 每批训练的样本数
                                            shuffle=True,  # 是否打乱训练集
                                            num_workers=4,  # 使用线程数
-                                           pin_memory=True)
-# 导入、加载 验证集
-# 导入验证集并进行预处理
+                                           pin_memory=True)  # 加快运算速度
+# 导入验证集
 validate_dataset = datasets.ImageFolder(root=image_path + "val",
                                         transform=data_transform["val"])
 val_num = len(validate_dataset)
@@ -58,19 +57,16 @@ validate_loader = torch.utils.data.DataLoader(validate_dataset,  # 导入的验�
 flower_list = train_dataset.class_to_idx
 # 将 flower_list 中的 key 和 val 调换位置
 cla_dict = dict((val, key) for key, val in flower_list.items())
-# 将 cla_dict 写入 json 文件中
-json_str = json.dumps(cla_dict, indent=4)
-with open('../flower_data/class_indices.json', 'w') as json_file:
-    json_file.write(json_str)
+
 
 # 加入 迁移学习
-model_resnet = models.resnet34(pretrained=True)
-pretrained_dict = model_resnet.state_dict()
-train_resnet = resnet34(num_classes=5)
+model_resnet = models.resnet34(pretrained=True)  # 训练好的ResNet34模型
+pretrained_dict = model_resnet.state_dict()  # 获取网络层参数
+train_resnet = resnet34(num_classes=5)  # 加入CBAM的ResNet34模型
 train_dict = train_resnet.state_dict()
 pretrained_dict = {k: v for k, v in pretrained_dict.items() if k in train_dict}  # 删除网络层不一样的
 train_dict.update(pretrained_dict)  # 更新成修改后的网络
-train_resnet.load_state_dict(train_dict)
+train_resnet.load_state_dict(train_dict)  # 加载模型参数
 
 train_resnet.to(device)  # 分配网络到指定的设备（GPU/CPU）训练
 loss_function = nn.CrossEntropyLoss()  # 交叉熵损失
