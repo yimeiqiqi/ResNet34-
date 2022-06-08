@@ -1,0 +1,47 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <title>鲜花识别系统</title>
+    <link type="text/css" rel="stylesheet" href="{{url_for('static', filename='css/all.css')}}">
+    <script type="text/javascript">
+        function upload(){
+            f.click()
+        }
+    </script>
+</head>
+<body>
+    <div class="head1"><h1>鲜花识别系统</h1></div>
+    <div class="content" style="overflow: hidden;">
+        <form action="" enctype='multipart/form-data' method='POST'>
+        <div class="fil">
+        <input type="file" name="file" enctype='multipart/form-data' method='POST' id="f" accept="image/*"
+               style="display: none" onchange="document.getElementById('txt').value=this.value.split('\\').pop()"/>
+        <input type="text" id="txt" readonly placeholder="请上传文件">
+        <input type="button" value="上传" id="butt" onclick="upload()">
+      </div>
+      <div class="butt2">
+        <input type="reset" id="re" value="重置">
+        <input type="submit" id="su" value="识别">
+      </div>
+        </form>
+    </div>
+    <div class="clear"></div>
+    <div class="colum">
+        <div class="bar"><h2>鲜花识别结果</h2></div>
+        <div class="resu-ul">
+            <img src="../static/images/val.png" width="224" height="224" alt=""/>
+            <ul>
+                <li style="background-color: rgb(240 252 252)">
+                    <p>识别结果：</p>
+                    <p>准确率：</p>
+                </li>
+                <li>
+                    <p>{{max_name}}</p>
+                    <p>{{max_acc}}%</p>
+                </li>
+            </ul>
+        </div>
+    </div>
+</body>
+</html>

@@ -1,0 +1,147 @@
+*{
+	margin: 0;
+	padding: 0;
+}
+body {
+	background-color: rgb(206,246,245);
+	margin: 0 auto;
+	width: 1000px;
+}
+
+ul {
+	padding: 0;
+	margin: 0
+}
+
+li{
+	list-style: none;
+}
+
+.head1 {
+	background-color: rgb(154,216,213);
+	height: 70px;
+
+}
+
+.head1 h1 {
+	text-decoration: none;
+	width: 90%;
+	margin: 0 5%;
+	float: left; line-height:70px;
+	text-align: center;
+	color: #000;
+	font-size: 40px;
+	/* font-weight: bold; */
+}
+
+.img {
+	position: relative;
+	width: 400px;
+	margin: 0.5cm auto;
+}
+
+.content {
+	background: rgba(255, 255, 255, 0.7);
+	padding: 30px
+}
+
+.bar {
+	border-bottom: #c6b7f2 solid 1px;
+	padding: 10px;
+	margin-bottom: 20px
+}
+
+.text-center {
+	text-align: center
+}
+
+.tx {
+	border-radius: 100px
+}
+.colum{
+	background-color: rgba(255, 255, 255, 0.7);
+	padding: 9px;
+}
+
+.colum h2{
+	margin: 0 auto;
+	text-align: center;
+	font-weight: normal;
+	font-size: 18px;
+}
+.resu, .resu-ul{
+	margin: 0 auto;
+	text-align: center;
+}
+.colum ul {
+	overflow: hidden;
+	margin-left:-10px;
+	margin-right:-10px;
+}
+
+.colum ul li{
+	height: 200px;
+	width: 170px;
+	background-color: #fff;
+	float: left;
+	margin: 15px;
+}
+.resu ul{
+	overflow: hidden;
+	margin: 0 355px;
+}
+.resu-ul ul{
+	overflow: hidden;
+	margin: 0 400px;
+}
+
+.resu ul li, .resu-ul ul li{
+	margin: 5px;
+	height: 45px;
+	width: 80px;
+	background-color: #fff;
+}
+
+img{
+	max-width:100%;
+}
+.tit{
+	margin: 0 auto;
+	text-align: center;
+}
+
+    .fil{
+      width: 100%;
+    }
+    #txt{
+      width: 90%;
+      height: 30px;
+      border: 1px solid #8bb1d8;
+      font-size: 15px;
+      margin-right: -5px;
+    }
+    #butt{
+      width: 70px;
+      height: 31px;
+      background-color: #a6effb;
+      border: 1px solid #a6effb;
+      font-size: 15px;
+    }
+    .butt2{
+      margin-top: 100px;
+      margin-left: 250px;
+    }
+    .butt2 input{
+      margin-left: 100px;
+      width: 70px;
+      height: 31px;
+      background-color: #a6effb;
+      border: 1px solid #a6effb;
+      font-size: 15px;
+    }
+	#butt:hover, #re:hover, #su:hover{
+		border-color: #0c0e0f;
+	}
+	#butt:active, #re:active, #su:active{
+		background-color: #aac2c6;
+	}

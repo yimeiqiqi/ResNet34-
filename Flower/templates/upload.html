@@ -1,0 +1,55 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <title>鲜花识别系统</title>
+    <link type="text/css" rel="stylesheet" href="{{url_for('static', filename='css/all.css')}}">
+    <script type="text/javascript">
+        function upload(){
+            f.click()
+        }
+    </script>
+</head>
+<body>
+    <div class="head1"><h1>鲜花识别系统</h1></div>
+    <div class="content" style="overflow: hidden;">
+        <form action="" enctype='multipart/form-data' method='POST'>
+        <div class="fil">
+        <input type="file" name="file" enctype='multipart/form-data' method='POST' id="f" accept="image/*"
+               style="display: none" onchange="document.getElementById('txt').value=this.value.split('\\').pop()"/>
+        <input type="text" id="txt" readonly placeholder="请上传文件">
+        <input type="button" value="上传" id="butt" onclick="upload()">
+      </div>
+      <div class="butt2">
+        <input type="reset" id="re" value="重置">
+        <input type="submit" id="su" value="识别">
+      </div>
+        </form>
+    </div>
+    <div class="colum">
+        <div class="bar"><h2>可识别的鲜花种类</h2></div>
+        <ul>
+            <li>
+                <div > <img src="../static/images/daisy.jpg" > </div>
+                <p class="tit">雏菊</p>
+            </li>
+            <li>
+                <div > <img src="../static/images/dandelion.jpg" > </div>
+                <p class="tit">蒲公英</p>
+            </li>
+            <li>
+                <div > <img src="../static/images/rose.jpg" > </div>
+                <p class="tit">玫瑰</p>
+            </li>
+            <li>
+                <div > <img src="../static/images/sunflower.jpg" > </div>
+                <p class="tit">向日葵</p>
+            </li>
+            <li>
+                <div > <img src="../static/images/tulip.jpg" > </div>
+                <p class="tit">郁金香</p>
+            </li>
+        </ul>
+    </div>
+</body>
+</html>
