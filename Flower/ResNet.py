@@ -62,6 +62,7 @@ class ResNet(nn.Module):
         self.layer3 = self._make_layer(block, 256, layers[2], stride=2)
         self.layer4 = self._make_layer(block, 512, layers[3], stride=2)
 
+#         加入CBAM注意力机制
         self.Cbam = Cba(self.inplanes)
 
         self.avgpool1 = nn.AdaptiveAvgPool2d((1, 1))
