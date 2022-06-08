@@ -1,7 +1,7 @@
 import torch
 from torch import nn
 
-
+# 通道注意力机制
 class channel_attention(nn.Module):
     def __init__(self, channel, ratio=16):
         super(channel_attention, self).__init__()
@@ -24,7 +24,7 @@ class channel_attention(nn.Module):
         out = self.sigmoid(out).view([b, c, 1, 1])
         return out * x
 
-
+# 空间注意力机制
 class spacial_attention(nn.Module):
     def __init__(self, kernel_size=7):
         super(spacial_attention, self).__init__()
@@ -39,7 +39,7 @@ class spacial_attention(nn.Module):
         out = self.sigmoid(out)
         return out * x
 
-
+# 先进入通道注意力机制，后进入空间注意力机制，最后输出
 class Cba(nn.Module):
     def __init__(self, channel, ratio=16, kernel_size=7):
         super(Cba, self).__init__()
