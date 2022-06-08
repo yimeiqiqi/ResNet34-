@@ -39,7 +39,7 @@ class spacial_attention(nn.Module):
         out = self.sigmoid(out)
         return out * x
 
-# 先进入通道注意力机制，后进入空间注意力机制，最后输出
+# 先进入通道注意力，后进入空间注意力，最后输出
 class Cba(nn.Module):
     def __init__(self, channel, ratio=16, kernel_size=7):
         super(Cba, self).__init__()
