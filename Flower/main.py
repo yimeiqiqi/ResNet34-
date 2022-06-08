@@ -32,7 +32,7 @@ model.eval()
 # 设置允许的文件格式
 ALLOWED_EXTENSIONS = set(['png', 'jpg', 'JPG', 'PNG', 'bmp'])
 
-
+# 获取文件名后缀
 def allowed_file(filename):
     return '.' in filename and filename.rsplit('.', 1)[1] in ALLOWED_EXTENSIONS
 
@@ -65,6 +65,7 @@ def upload():
         file = request.files['file']
         if not (file and allowed_file(file.filename)):
             return jsonify({"error": 1001, "msg": "请检查上传的图片类型，仅限于png、PNG、jpg、JPG、bmp"})
+#         将上传的图片保存到页面中展示
         with open(r'./static/images/val.png', 'wb') as val:
             val.write(file.read())
         file.close()
@@ -82,6 +83,7 @@ def upload():
             res_chinese = ["小雏菊", "蒲公英", "玫瑰花", "向日葵", "郁金香"]
             max_name = res_chinese[predict_cla]  # 最可能的花
             max_acc = round(predict[predict_cla].item()*100, 2)  # 保留两位小数
+#             准确率大于90%，只输出一种结果
             if max_acc > 90:
                 return render_template('result.html', max_name=max_name, max_acc=max_acc)
             else:
@@ -92,6 +94,7 @@ def upload():
                         sec_cla = i
                 sec_name = res_chinese[sec_cla]
                 sec_acc = round(predict[sec_cla].item()*100, 2)
+#                 不足百分之九十，输出两种准确率最大的结果
                 return render_template('result2.html', max_name=max_name, max_acc=max_acc,
                                        sec_acc=sec_acc, sec_name=sec_name)
     return render_template('upload.html')
